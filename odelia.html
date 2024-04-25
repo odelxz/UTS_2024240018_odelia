@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Simulasi Pembayaran THR dan PPH Odelia 2024240018</title>
+</head>
+<body>
+
+<h2>Simulasi Pembayaran THR dan PPH Odelia</h2>
+
+<p>Masukkan data berikut:</p>
+
+<label for="gajiPokok">Gaji Pokok:</label>
+<input type="number" id="gajiPokok" required><br>
+
+<label for="tunjanganTetap">Tunjangan Tetap:</label>
+<input type="number" id="tunjanganTetap" required><br>
+
+<label for="masaKerja">Masa Kerja (dalam bulan):</label>
+<input type="number" id="masaKerja" required><br>
+
+<button onclick="hitungTotalPembayaran()">Hitung Total Pembayaran</button>
+
+<p id="hasilTotalPembayaran"></p>
+
+<script>
+function hitungTotalPembayaran() {
+    var gajiPokok = parseFloat(document.getElementById('gajiPokok').value);
+    var tunjanganTetap = parseFloat(document.getElementById('tunjanganTetap').value);
+    var masaKerja = parseInt(document.getElementById('masaKerja').value);
+
+    // Menghitung total gaji
+    var totalGaji = gajiPokok + tunjanganTetap;
+
+    // Menghitung THR
+    var THR;
+    if (masaKerja >= 12) {
+        THR = totalGaji;
+    } else {
+        THR = (masaKerja / 12) * totalGaji;
+    }
+
+    // Menghitung PPH no 3
+    var PTKP = 4500000; // Pendapatan tidak kena pajak
+    var PPH = 0;
+    if (totalGaji > PTKP) {
+        PPH = (totalGaji - PTKP) * 0.05; // Tarif PPH ps. 21 adalah 5%
+    }
+
+    // Menghitung total pembayaran
+    var totalPembayaran = THR + PPH;
+
+    // Menampilkan hasil
+    var hasilTotalPembayaran = "THR: " + THR + "<br>";
+    hasilTotalPembayaran += "PPH: " + PPH + "<br>";
+    hasilTotalPembayaran += "Total Pembayaran: " + totalPembayaran + "<br>";
+
+    document.getElementById("hasilTotalPembayaran").innerHTML = hasilTotalPembayaran;
+}
+</script>
+
+</body>
+</html>
