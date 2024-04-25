@@ -1,13 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Simulasi Pembayaran THR dan PPH Odelia 2024240018</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulasi Pembayaran THR dan PPH Odelia 2024240018</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h2 {
+            margin-bottom: 20px;
+        }
+
+        label {
+            margin-right: 10px;
+        }
+
+        input {
+            margin-bottom: 10px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        #hasilTotalPembayaran {
+            margin-top: 20px;
+            font-size: 18px;
+        }
+    </style>
 </head>
 <body>
 
-<h2>Simulasi Pembayaran THR dan PPH Odelia</h2>
+<h2>Simulasi Pembayaran THR dan PPH Odelia 2024240018</h2>
 
 <p>Masukkan data berikut:</p>
 
@@ -41,7 +77,7 @@ function hitungTotalPembayaran() {
         THR = (masaKerja / 12) * totalGaji;
     }
 
-    // Menghitung PPH no 3
+    // Menghitung PPH
     var PTKP = 4500000; // Pendapatan tidak kena pajak
     var PPH = 0;
     if (totalGaji > PTKP) {
@@ -52,9 +88,9 @@ function hitungTotalPembayaran() {
     var totalPembayaran = THR + PPH;
 
     // Menampilkan hasil
-    var hasilTotalPembayaran = "THR: " + THR + "<br>";
-    hasilTotalPembayaran += "PPH: " + PPH + "<br>";
-    hasilTotalPembayaran += "Total Pembayaran: " + totalPembayaran + "<br>";
+    var hasilTotalPembayaran = "THR: " + THR.toFixed(2) + "<br>";
+    hasilTotalPembayaran += "PPH: " + PPH.toFixed(2) + "<br>";
+    hasilTotalPembayaran += "Total Pembayaran: " + totalPembayaran.toFixed(2) + "<br>";
 
     document.getElementById("hasilTotalPembayaran").innerHTML = hasilTotalPembayaran;
 }
